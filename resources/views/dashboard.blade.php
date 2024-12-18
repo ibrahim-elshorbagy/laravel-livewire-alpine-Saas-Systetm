@@ -1,17 +1,21 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+        <div
+            {{-- max-w-md --}}
+            class="flex flex-col p-6 border rounded-md group border-neutral-300 bg-neutral-50 text-neutral-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300">
 
-    <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
+            <div>
+            <i class="h-5 fa-brands fa-laravel fa-2xl"></i>
             </div>
+
+            <p class="mt-2 text-sm text-pretty">
+                Simply put, this software transformed my workflow! Its intuitive
+                interface and powerful features make tasks a breeze. A game-changer
+                for productivity!
+            </p>
+
+
+
+
+
         </div>
-    </div>
 </x-app-layout>
