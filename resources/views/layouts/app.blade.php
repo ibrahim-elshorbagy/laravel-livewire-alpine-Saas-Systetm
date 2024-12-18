@@ -35,6 +35,7 @@
         <div x-cloak x-show="sidebarIsOpen" class="fixed inset-0 z-20 bg-neutral-950/10 backdrop-blur-sm md:hidden"
             aria-hidden="true" x-on:click="sidebarIsOpen = false" x-transition.opacity></div>
 
+        @persist('sidebar')
         <nav x-cloak
             class="fixed left-0 z-30 flex flex-col p-4 transition-transform duration-300 border-r h-svh w-60 shrink-0 border-neutral-300 bg-neutral-50 md:w-64 md:translate-x-0 md:relative dark:border-neutral-700 dark:bg-neutral-900"
             x-bind:class="sidebarIsOpen ? 'translate-x-0' : '-translate-x-60'" aria-label="sidebar navigation">
@@ -81,19 +82,46 @@
                     aria-controls="user-management" x-bind:aria-expanded="isExpanded ? 'true' : 'false'"
                     class="flex items-center justify-between rounded-md gap-2 px-2 py-1.5 text-sm font-medium underline-offset-2 focus:outline-none focus-visible:underline"
                     x-bind:class="isExpanded ? 'text-neutral-900 bg-black/10 dark:text-white dark:bg-white/10' :  'text-neutral-600 hover:bg-black/5 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-white/5'">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                        class="size-5 shrink-0" aria-hidden="true">
-                        <path
-                            d="M7 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM14.5 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM1.615 16.428a1.224 1.224 0 0 1-.569-1.175 6.002 6.002 0 0 1 11.908 0c.058.467-.172.92-.57 1.174A9.953 9.953 0 0 1 7 18a9.953 9.953 0 0 1-5.385-1.572ZM14.5 16h-.106c.07-.297.088-.611.048-.933a7.47 7.47 0 0 0-1.588-3.755 4.502 4.502 0 0 1 5.874 2.636.818.818 0 0 1-.36.98A7.465 7.465 0 0 1 14.5 16Z" />
-                    </svg>
+
+                    <i class="fa-solid fa-user"></i>
+
                     <span class="mr-auto text-left">User Management</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                        class="transition-transform rotate-0 size-5 shrink-0"
-                        x-bind:class="isExpanded ? 'rotate-180' : 'rotate-0'" aria-hidden="true">
-                        <path fill-rule="evenodd"
-                            d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                            clip-rule="evenodd" />
-                    </svg>
+
+                    <i class="transition-transform fa-solid fa-angle-up "
+                    x-bind:class="isExpanded ? 'rotate-0' : 'rotate-180'" aria-hidden="true"></i>
+                </button>
+
+                <ul x-cloak x-collapse x-show="isExpanded" aria-labelledby="user-management-btn" id="user-management">
+                    <li class="px-1 py-0.5 first:mt-2">
+                        <a href="#"
+                            class="flex items-center rounded-md gap-2 px-2 py-1.5 text-sm text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-neutral-900 focus:outline-none focus-visible:underline dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-white">Users</a>
+                    </li>
+                    <li class="px-1 py-0.5 first:mt-2">
+                        <a href="#"
+                            class="flex items-center rounded-md gap-2 px-2 py-1.5 text-sm text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-neutral-900 focus:outline-none focus-visible:underline dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-white">Permissions</a>
+                    </li>
+                    <li class="px-1 py-0.5 first:mt-2">
+                        <a href="#"
+                            class="flex items-center rounded-md gap-2 px-2 py-1.5 text-sm text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-neutral-900 focus:outline-none focus-visible:underline dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-white">Activity
+                            Log</a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <!-- collapsible item  -->
+            <div x-data="{ isExpanded: false }" class="flex flex-col">
+                <button type="button" x-on:click="isExpanded = ! isExpanded" id="user-management-btn"
+                    aria-controls="user-management" x-bind:aria-expanded="isExpanded ? 'true' : 'false'"
+                    class="flex items-center justify-between rounded-md gap-2 px-2 py-1.5 text-sm font-medium underline-offset-2 focus:outline-none focus-visible:underline"
+                    x-bind:class="isExpanded ? 'text-neutral-900 bg-black/10 dark:text-white dark:bg-white/10' :  'text-neutral-600 hover:bg-black/5 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-white/5'">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <span class="mr-auto text-left">User Management</span>
+
+                    <i class="transition-transform fa-solid fa-angle-up "
+                        x-bind:class="isExpanded ? 'rotate-0' : 'rotate-180'" aria-hidden="true"></i>
                 </button>
 
                 <ul x-cloak x-collapse x-show="isExpanded" aria-labelledby="user-management-btn" id="user-management">
@@ -113,7 +141,7 @@
                 </ul>
             </div>
         </nav>
-
+        @endpersist('sidebar')
         <!-- top navbar & main content  -->
         <div class="w-full overflow-y-auto bg-white h-svh dark:bg-neutral-950">
             <!-- top navbar  -->
