@@ -9,19 +9,19 @@
         <div class="mx-auto space-y-6">
             <div class="flex flex-col p-6 border rounded-md group border-neutral-300 bg-neutral-50 text-neutral-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300">
                 <div class="max-w-xl">
-                    <livewire:profile.update-profile-information-form />
+                    <livewire:pages.profile.update-profile-information-form />
                 </div>
             </div>
 
             <div class="flex flex-col p-6 border rounded-md group border-neutral-300 bg-neutral-50 text-neutral-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300">
                 <div class="max-w-xl">
-                    <livewire:profile.update-password-form />
+                    <livewire:pages.profile.update-password-form />
                 </div>
             </div>
 
             <div class="flex flex-col p-6 border rounded-md group border-neutral-300 bg-neutral-50 text-neutral-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300">
                 <div class="max-w-xl">
-                    <livewire:profile.delete-user-form />
+                    <livewire:pages.profile.delete-user-form />
                 </div>
             </div>
         </div>

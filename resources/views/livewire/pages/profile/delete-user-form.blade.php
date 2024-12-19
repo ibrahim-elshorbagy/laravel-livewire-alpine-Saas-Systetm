@@ -11,15 +11,28 @@ new class extends Component
     /**
      * Delete the currently authenticated user.
      */
-    public function deleteUser(Logout $logout): void
+    public function deleteUser(): void
     {
+        // Validate the user's current password before proceeding
         $this->validate([
             'password' => ['required', 'string', 'current_password'],
         ]);
 
-        tap(Auth::user(), $logout(...))->delete();
+        // Get the authenticated user
+        $user = Auth::user();
 
-        $this->redirect('/', navigate: true);
+        // Check if the user exists before attempting deletion
+        if ($user) {
+            // Delete the user and log them out
+            $user->delete();
+            Auth::logout();
+
+            // Redirect to the homepage with navigation
+            $this->redirect('/', navigate: true);
+        } else {
+            // Handle case where no authenticated user is found
+            abort(403, 'Unauthorized action. No user to delete.');
+        }
     }
 }; ?>
 
