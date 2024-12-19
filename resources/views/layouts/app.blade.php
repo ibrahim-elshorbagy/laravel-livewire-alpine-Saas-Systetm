@@ -156,7 +156,7 @@
                         <path
                             d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5-1v12h9a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM4 2H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h2z" />
                     </svg>
-                    <span class="sr-only">sidebar toggle</span>
+                    <span class="sr-only ">sidebar toggle</span>
                 </button>
 
                 <!-- breadcrumbs  -->
@@ -210,8 +210,7 @@
                                 <a href="{{ route('profile') }}" wire:navigate
                                     class="flex items-center gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-neutral-900 focus-visible:underline focus:outline-none dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-white"
                                     role="menuitem">
-                                    {{--
-                                    <x-ik-user class="w-5 h-5 text-white" /> --}}
+                                    <i class="fa-regular fa-user"></i>
                                     <span>Profile</span>
                                 </a>
                             </div>
@@ -241,7 +240,7 @@
                                 </a>
                             </div> --}}
 
-                            <div class="flex flex-col py-1.5">
+                            <div class="flex flex-col">
                                 <livewire:auth.logout/>
                             </div>
                         </div>

@@ -36,8 +36,8 @@ new #[Layout('layouts.guest')] class extends Component
     }
 }; ?>
 
-<div>
-    <form wire:submit="register">
+<div class="grid h-screen place-items-center">
+    <div class="flex flex-col p-6 border rounded-md w-46 md:w-[32rem] group border-neutral-300 bg-neutral-50 text-neutral-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300">    <form wire:submit="register">
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
@@ -85,4 +85,5 @@ new #[Layout('layouts.guest')] class extends Component
             </x-primary-button>
         </div>
     </form>
+    </div>
 </div>
