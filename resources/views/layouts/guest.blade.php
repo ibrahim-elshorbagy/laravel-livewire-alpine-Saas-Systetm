@@ -90,7 +90,7 @@
 
                             @auth
                             <div class="flex flex-col">
-                                <livewire:auth.logout />
+                                <livewire:pages.auth.logout />
                             </div>
                             @endauth
                         </div>
@@ -134,7 +134,7 @@
 
                             @auth
                             <div class="flex flex-col">
-                                <livewire:auth.logout />
+                                <livewire:pages.auth.logout />
                             </div>
                             @endauth
                         </div>

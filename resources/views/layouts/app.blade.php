@@ -241,7 +241,7 @@
                             </div> --}}
 
                             <div class="flex flex-col">
-                                <livewire:auth.logout/>
+                               <livewire:pages.auth.logout />
                             </div>
                         </div>
                     </div>

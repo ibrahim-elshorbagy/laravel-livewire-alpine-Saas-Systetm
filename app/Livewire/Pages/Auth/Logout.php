@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Livewire\Auth;
+namespace App\Livewire\Pages\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Logout extends Component
 {
-        public function logout()
+
+    public function logout()
     {
         Auth::logout();
         return $this->redirect('/', navigate: true);
@@ -15,6 +16,6 @@ class Logout extends Component
     }
     public function render()
     {
-        return view('livewire.auth.logout');
+        return view('livewire.pages.auth.logout');
     }
 }
