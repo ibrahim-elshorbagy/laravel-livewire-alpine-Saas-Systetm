@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'LivewireSaaS') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -35,7 +35,7 @@
         <div x-cloak x-show="sidebarIsOpen" class="fixed inset-0 z-20 bg-neutral-950/10 backdrop-blur-sm md:hidden"
             aria-hidden="true" x-on:click="sidebarIsOpen = false" x-transition.opacity></div>
 
-        @persist('sidebar')
+
         <nav x-cloak
             class="fixed left-0 z-30 flex flex-col p-4 transition-transform duration-300 border-r h-svh w-60 shrink-0 border-neutral-300 bg-neutral-50 md:w-64 md:translate-x-0 md:relative dark:border-neutral-700 dark:bg-neutral-900"
             x-bind:class="sidebarIsOpen ? 'translate-x-0' : '-translate-x-60'" aria-label="sidebar navigation">
@@ -67,14 +67,17 @@
             <!-- sidebar links  -->
             <div class="flex flex-col gap-2 pb-3 overflow-y-auto">
 
-                <a href="{{ route('dashboard') }}" wire:navigate
-                    class="flex items-center rounded-md gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-neutral-900 focus-visible:underline focus:outline-none dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-white">
+                <x-nav-link :active="request()->routeIs('dashboard')" href="{{ route('dashboard') }}" wire:navigate>
                     <i class="fas fa-th-large"></i>
                     <span>Dashboard</span>
-                </a>
+                </x-nav-link>
 
 
             </div>
+
+
+            @persist('sidebar')
+
 
             <!-- collapsible item  -->
             <div x-data="{ isExpanded: false }" class="flex flex-col">
@@ -93,8 +96,10 @@
 
                 <ul x-cloak x-collapse x-show="isExpanded" aria-labelledby="user-management-btn" id="user-management">
                     <li class="px-1 py-0.5 first:mt-2">
-                        <a href="#"
-                            class="flex items-center rounded-md gap-2 px-2 py-1.5 text-sm text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-neutral-900 focus:outline-none focus-visible:underline dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-white">Users</a>
+                        <x-nav-link  href="{{ route('play-ground') }}" wire:navigate>
+                            <i class="fa-solid fa-play fa-spin"></i>
+                            <span>Play Ground</span>
+                        </x-nav-link>
                     </li>
                     <li class="px-1 py-0.5 first:mt-2">
                         <a href="#"
@@ -129,19 +134,12 @@
                         <a href="#"
                             class="flex items-center rounded-md gap-2 px-2 py-1.5 text-sm text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-neutral-900 focus:outline-none focus-visible:underline dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-white">Users</a>
                     </li>
-                    <li class="px-1 py-0.5 first:mt-2">
-                        <a href="#"
-                            class="flex items-center rounded-md gap-2 px-2 py-1.5 text-sm text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-neutral-900 focus:outline-none focus-visible:underline dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-white">Permissions</a>
-                    </li>
-                    <li class="px-1 py-0.5 first:mt-2">
-                        <a href="#"
-                            class="flex items-center rounded-md gap-2 px-2 py-1.5 text-sm text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-neutral-900 focus:outline-none focus-visible:underline dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-white">Activity
-                            Log</a>
-                    </li>
+
                 </ul>
             </div>
+
+            @endpersist('sidebar')
         </nav>
-        @endpersist('sidebar')
         <!-- top navbar & main content  -->
         <div class="w-full overflow-y-auto bg-white h-svh dark:bg-neutral-950">
             <!-- top navbar  -->

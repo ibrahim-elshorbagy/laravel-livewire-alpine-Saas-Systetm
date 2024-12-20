@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PlayGround\Todo;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,6 +20,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'ibrahim elshorbagy',
             'email' => 'a@a.a',
             'password' => bcrypt('a'),
+        ]);
+
+        Todo::create([
+            'user_id' => 1,
+            'title' => 'first todo',
+            'description' => 'first todo description',
+            'image_url' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSjmY6j4zBSeKxLjTXNj4oK2g4xrtAj9rTNw&s'
         ]);
     }
 }
