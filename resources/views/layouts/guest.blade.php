@@ -43,7 +43,7 @@
 
                 <!-- sidebar toggle button for small screens  -->
 
-                <a href="{{ route('welcome') }}" class="w-12 text-neutral-600 dark:text-neutral-300">
+                <a href="{{ route('welcome') }}" class="w-12 text-neutral-600 dark:text-neutral-300" wire:navigate>
                     <x-application-logo/>
                 </a>
 
