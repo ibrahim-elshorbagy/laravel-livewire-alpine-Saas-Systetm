@@ -1,7 +1,6 @@
 
 {{-- Full CRUD
-cons :
-the update is so slow as we get the data from the server first
+Tried my best to make it Full CRUD with help of alpine to be fast and one server request for store
 --}}
 
 
@@ -73,10 +72,12 @@ the update is so slow as we get the data from the server first
 
 
         <div id="todos-list">
-            @foreach ($this->list() as $todo)
-                @include('livewire.pages.play-ground.includes.todo-card', ['todo' => $todo])
-            @endforeach
 
+        {{-- @foreach ($this->list() as $todo)
+                @include('livewire.pages.play-ground.includes.todo-card', ['todo' => $todo])
+            @endforeach --}}
+
+            @each('livewire.pages.play-ground.includes.todo-card', $this->list(), 'todo')
             <div class="px-6 my-2">
                 {{ $this->list()->links() }}
             </div>
